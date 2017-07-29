@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 from django.views import generic
 
 from messaging.forms import MessageCreateForm
@@ -14,6 +15,13 @@ class MessageListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return super().get_queryset().filter(to=self.request.user).order_by('-on')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['url'] = self.request.build_absolute_uri(
+            reverse('message-create', kwargs={'username': self.request.user.username})
+        )
+        return context
 
 
 class MessageCreateView(generic.CreateView):

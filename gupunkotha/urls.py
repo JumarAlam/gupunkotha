@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from allauth.account.views import SignupView
 from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
@@ -24,7 +25,7 @@ from messaging.views import MessageListView, MessageCreateView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', MessageListView.as_view(), name='message-list'),
-    url(r'^u/(?P<username>[a-zA-Z0-9]+)/$', MessageCreateView.as_view(), name='message-list'),
+    url(r'^u/(?P<username>[a-zA-Z0-9]+)/$', MessageCreateView.as_view(), name='message-create'),
 
     url(r'^login/$', views.LoginView.as_view(), name='login'),
     url(r'^logout/$', views.LogoutView.as_view(), name='logout'),
@@ -37,6 +38,7 @@ urlpatterns = [
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     url(r'^reset/done/$', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    url(r'^accounts/signup/$', SignupView.as_view()),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

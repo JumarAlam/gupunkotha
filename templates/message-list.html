@@ -6,6 +6,16 @@
 {% block content %}
     {{ block.super }}
 
+    {% if not object_list %}
+        <h3 class="text-center">ধুরু, একটাও মেসেজ নাই! :/</h3>
+        <br>
+    {% endif %}
+    <h4 class="text-center">বন্ধুদের লিংক দাও!</h4><br>
+    <div style="margin: 0 auto; max-width: 300px">
+        <input type="text" class="form-control" value="{{ url }}" readonly>
+    </div>
+    <br>
+
     {% for message in object_list %}
         <div class="col-md-6">
             <div class="well well-lg">

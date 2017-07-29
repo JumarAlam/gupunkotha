@@ -5,7 +5,7 @@
 {% block content %}
     {{ block.super }}
 
-    <div class="text-center text-capitalize text-primary text"><h2>{{ to.get_full_name }}</h2></div>
+    <div class="text-center text-capitalize text-primary text"><h2>{{ to }}-কে</h2></div>
     <br>
     <form class="form-group" action="" method="post">
         {% csrf_token %}

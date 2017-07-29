@@ -1,0 +1,25 @@
+{% extends "base/real.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+    <div class="text-center"><h2>রেজিস্টার</h2></div>
+<form class="form-group" method="post" action="{% url 'account_signup' %}"  style="margin: 0 auto; max-width: 335px">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <div class="text-center"><button type="submit" class="btn btn-success">রেজিস্টার</button></div>
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script>
+        $('form input[type=text], form input[type=password], form input[type=email]').addClass('form-control');
+    </script>
+{% endblock %}
