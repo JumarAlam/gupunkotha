@@ -1,0 +1,16 @@
+{% extends 'base/master.html' %}
+
+{% block body %}
+    {{ block.super }}
+
+    <div class="container">
+        <div class="row starter-template">
+
+            {% for message in messages %}
+                <div class="{{ message.extra_tags }}">{{ message }}</div>
+            {% endfor %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

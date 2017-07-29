@@ -1,0 +1,19 @@
+{% extends 'base/real.html' %}
+
+{% block title %}Messages | {{ block.super }}{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+
+    <div class="text-center text-capitalize text-primary text"><h2>{{ to.get_full_name }}</h2></div>
+    <br>
+    <form class="form-group" action="" method="post">
+        {% csrf_token %}
+        {{ form.message }}
+        <br>
+        <div class="text-center">
+            <input type="submit" class="btn btn-success btn-lg" value="বার্তা পাঠান">
+        </div>
+    </form>
+
+{% endblock %}

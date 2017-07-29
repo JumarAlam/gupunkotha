@@ -1,0 +1,22 @@
+{% extends 'base/real.html' %}
+{% load humanize %}
+
+{% block title %}Messages | {{ block.super }}{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+
+    {% for message in object_list %}
+        <div class="col-md-6">
+            <div class="well well-lg">
+                <blockquote>
+                    {{ message.message }}
+                </blockquote>
+                <br>
+                <span><i>{{ message.on | naturaltime }}</i></span>
+            </div>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
