@@ -16,7 +16,7 @@
             </ul>
             <ul class="nav navbar-nav pull-right">
                 {% if not user.is_authenticated %}
-                    <li><a href="{% url 'login' %}">লগইন</a></li>
+                    <li><a href="{% url 'account_login' %}">লগইন</a></li>
                 {% else %}
                     <li><a href="#">{{ user }}</a></li>
                     <li><a href="{% url 'logout' %}">লগআউট</a></li>
