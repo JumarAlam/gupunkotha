@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^$', MessageListView.as_view(), name='message-list'),
     url(r'^u/(?P<username>[a-zA-Z0-9]+)/$', MessageCreateView.as_view(), name='message-create'),
 
-    url(r'^login/$', views.LoginView.as_view(), name='login'),
+    url(r'^login/$', views.LoginView.as_view(), name='account_login'),
     url(r'^logout/$', views.LogoutView.as_view(), name='logout'),
 
     url(r'^password_change/$', views.PasswordChangeView.as_view(), name='password_change'),
